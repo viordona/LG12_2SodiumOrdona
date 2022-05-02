@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Nested Loop </title>
+<meta charset="UTF-8">
+<meta name="author" content="ORDONA, Victoria Alexandra I.">
+<meta name="revised" content="02-05-2022">
+</head>
+
+<body>
+
+<form onsubmit = "return output();">
+<br> <label for = "firstNum"> [enter a number between 2 and 10] </label> <br>
+<input type = "number" id = "firstNum" name = "firstNum">
+
+<label for = "secondNum"> by </label> 
+<input type = "number" id = "secondNum" name = "secondNum"> <br> <br>
+
+<input type = "submit" value = "Click here when ready!">
+</form>
+
+<br> <table id = "multiplicationTable" style = "display: none;" border = "1"></table>
+
+<script>
+
+function output() {
+	let tableOutput = document.getElementById("multiplicationTable");
+	
+	let first = parseInt(document.getElementById("firstNum").value);
+	let second = parseInt(document.getElementById("secondNum").value); 
+	
+	let range = first > 10 || first < 2;
+	let range2 = second > 10 || second < 2;
+
+	if (range || range2)  {
+		alert("Please enter numbers between 2 and 10");
+	}
+	
+	else {
+		for(let multiplier = 1; multiplier < first + 1; multiplier++) {
+		
+			let rows = tableOutput.insertRow(multiplier - 1);
+   
+			for(let multiplicand = 1; multiplicand < second + 1; multiplicand++)  { 
+				let results = rows.insertCell(multiplicand - 1);
+				results.innerHTML = multiplier * multiplicand;
+			}
+		}
+	document.getElementById("multiplicationTable").style.display = "";
+   }
+   return false;
+}
+
+</script>
+</body>
+
+</html>
+
+
